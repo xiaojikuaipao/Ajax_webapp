@@ -1,0 +1,41 @@
+<script>
+    function createAjax(){
+        var request = false;
+
+        //window object exists XMLHttpRequest for non_IE including IE7,IE8
+        if(window.XMLHttpRequest){
+            request = new XMLHttpRequest();
+            
+            if(request.overrideMimeType){
+
+                request.overrideMimeType("text/xml");
+
+          }
+        
+        }
+        // window object exists ActiveXObject for IE
+        else if(window.ActiveXobject){
+            var versions=['Microsoft.XMLHTTP','MSXML.XMLHTTP','Msxml2.XMLHTTP.7.0', 'Msxml2.XMLHTTP.6.0','Msxml2.XMLHTTP.5.0','Msxml2.XMLHTTP.4.0','Msxml2.XMLHTTP.3.0','MSXML2.XMLHTTP'];
+            for(var i = 0; i < version.length; i++){
+                try {
+                    request = new ActiveXObject(versions[i]);
+                    
+                    if(request){
+
+                        return request;
+                     }
+                }
+                catch(e){
+                    request = false;
+       
+              }   
+     }
+  }
+
+        return request;
+
+}
+
+var ajax=createAjax();
+alert(ajax);
+</script>
